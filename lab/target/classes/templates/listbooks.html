@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Reservation - Welcome and choose a Book</title>
+    <style>
+        body {
+            width: 800px;
+            margin: auto;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        .book-option {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .book-option:hover {
+            background-color: #f5f5f5;
+        }
+        .search-bar {
+            background-color: #eef;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .search-bar input {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Welcome to our Book Reservation App</h1>
+</header>
+
+<main>
+    <form class="search-bar" action="/" method="GET">
+        <label for="text">Search by title:</label>
+        <input type="text" id="text" name="text" placeholder="Enter part of title...">
+        <label for="rating">Min rating:</label>
+        <input type="number" id="rating" name="rating" step="0.1" min="0" max="10">
+        <input type="submit" value="Search">
+    </form>
+
+    <form action="/bookReservation" method="POST">
+        <h2>Choose a book:</h2>
+
+        <div class="book-option">
+            <input type="radio" name="bookTitle" value="The Hobbit" required>
+            Title: The Hobbit, Genre: Fantasy, Rating: 9.1
+        </div>
+
+        <div class="book-option">
+            <input type="radio" name="bookTitle" value="Harry Potter" required>
+            Title: Harry Potter, Genre: Fantasy, Rating: 8.7
+        </div>
+
+        <div class="book-option">
+            <input type="radio" name="bookTitle" value="1984" required>
+            Title: 1984, Genre: Dystopian, Rating: 9.5
+        </div>
+
+        <h2>Enter your information:</h2>
+        <label>Your Name:</label>
+        <input type="text" name="readerName" required><br>
+        <label>Your Address:</label>
+        <input type="text" name="readerAddress" required><br>
+
+        <h2>Choose number of copies:</h2>
+        <input type="number" name="numCopies" min="1" max="10" required><br>
+        <br>
+        <input type="submit" value="Reserve Book">
+    </form>
+</main>
+</body>
+</html>
