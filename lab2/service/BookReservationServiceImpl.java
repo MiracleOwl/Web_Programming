@@ -1,0 +1,31 @@
+package mk.ukim.finki.wp.lab.service;
+
+import mk.ukim.finki.wp.lab.model.BookReservation;
+import mk.ukim.finki.wp.lab.repository.BookReservationRepository;
+import org.springframework.stereotype.Service;
+import java.util.List;
+@Service
+public class BookReservationServiceImpl implements BookReservationService{
+    private final BookReservationRepository bookReservationRepository;
+
+    public BookReservationServiceImpl(BookReservationRepository bookReservationRepository) {
+        this.bookReservationRepository = bookReservationRepository;
+    }
+    @Override
+    public BookReservation placeReservation(String bookTitle, String readerName, String readerAddress,Long numberOfCopies)
+    {
+        BookReservation reservation = new BookReservation(bookTitle,readerName,readerAddress,numberOfCopies);
+        reservation.setBookTitle(bookTitle);
+        reservation.setReaderName(readerName);
+        reservation.setReaderAddress(readerAddress);
+        reservation.setNumberOfCopies(numberOfCopies);
+
+        return bookReservationRepository.save(reservation);
+    }
+    @Override
+    public List<BookReservation> getReservationsForBook(String bookTitle)
+    {
+        return bookReservationRepository.findAllByBookTitle(bookTitle);
+    }
+
+}
