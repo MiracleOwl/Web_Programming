@@ -7,30 +7,37 @@ import mk.ukim.finki.wp.lab.model.Book;
 import mk.ukim.finki.wp.lab.bootstrap.DataHolder;
 import java.util.ArrayList;
 
+@Controller
 public class BookController {
+
+    @GetMapping("/")
+    public String redirectToBooks() {
+        return "redirect:/books";
+    }
+
     @GetMapping("/books")
-    public String getBooksPage(@RequestParam(required = false) String error,Model model){
-        model.addAttribute("books",new java.util.ArrayList<>());
-        if(error != null && !error.isEmpty()){
-            model.addAttribute("hasError",true);
-            model.addAttribute("error",error);
-        }else
-        {
-            model.addAttribute("hasError",false);
+    public String getBooksPage(@RequestParam(required = false) String error, Model model) {
+        model.addAttribute("books", DataHolder.books);
+        if (error != null && !error.isEmpty()) {
+            model.addAttribute("hasError", true);
+            model.addAttribute("error", error);
+        } else {
+            model.addAttribute("hasError", false);
         }
         return "listBooks";
     }
+
     @PostMapping("/books/add")
     public String saveBook(@RequestParam String title,
                            @RequestParam String genre,
                            @RequestParam Double averageRating,
-                           @RequestParam Long authorId){
+                           @RequestParam Long authorId) {
         Book book = new Book(title, genre, averageRating);
         book.setId((long) (Math.random() * 1000));
-
         DataHolder.books.add(book);
         return "redirect:/books";
     }
+
     @PostMapping("/books/edit/{bookId}")
     public String editBook(@PathVariable Long bookId,
                            @RequestParam String title,
@@ -45,22 +52,23 @@ public class BookController {
             bookToEdit.setTitle(title);
             bookToEdit.setGenre(genre);
             bookToEdit.setAverageRating(averageRating);
-
-
         }
         return "redirect:/books";
     }
+
     @PostMapping("/books/delete/{id}")
-    public String deleteBook(@PathVariable Long id){
+    public String deleteBook(@PathVariable Long id) {
         DataHolder.books.removeIf(book -> book.getId().equals(id));
         return "redirect:/books";
     }
+
     @GetMapping("/book-form")
     public String getAddBookPage(Model model) {
         model.addAttribute("book", new Book());
         model.addAttribute("authors", new ArrayList<>());
         return "book-form";
     }
+
     @GetMapping("/book-form/{id}")
     public String getEditBookForm(@PathVariable Long id, Model model) {
         Book book = DataHolder.books.stream()
@@ -73,5 +81,17 @@ public class BookController {
         model.addAttribute("book", book);
         model.addAttribute("authors", new ArrayList<>());
         return "book-form";
+    }
+
+    @PostMapping("/books/{id}/like")
+    public String likeBook(@PathVariable Long id) {
+        Book book = DataHolder.books.stream()
+                .filter(b -> b.getId().equals(id))
+                .findFirst()
+                .orElse(null);
+        if (book != null) {
+            book.like();
+        }
+        return "redirect:/books";
     }
 }

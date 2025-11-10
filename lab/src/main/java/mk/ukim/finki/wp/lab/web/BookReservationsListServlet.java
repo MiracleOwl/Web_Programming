@@ -1,3 +1,4 @@
+/*
 package mk.ukim.finki.wp.lab.web;
 
 import jakarta.servlet.ServletException;
@@ -6,6 +7,7 @@ import jakarta.servlet.http.*;
 import mk.ukim.finki.wp.lab.model.BookReservation;
 import mk.ukim.finki.wp.lab.service.BookReservationService;
 import org.springframework.stereotype.Component;
+
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -47,3 +49,4 @@ public class BookReservationsListServlet extends HttpServlet {
         out.println("</body></html>");
     }
 }
+*/

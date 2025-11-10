@@ -7,4 +7,6 @@ public interface BookService{
     List<Book> listAll();
     Book saveBook(String title, String genre, Double averageRating, Long authorId);
     Book editBook(Long bookId, String title, String genre, Double averageRating, Long authorId);
-    void deleteBook(Long bookId);}
+    void deleteBook(Long bookId);
+    Book likeBook(Long bookId);
+}
