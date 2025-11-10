@@ -3,7 +3,7 @@ package mk.ukim.finki.wp.lab.service;
 import mk.ukim.finki.wp.lab.model.BookReservation;
 import mk.ukim.finki.wp.lab.repository.BookReservationRepository;
 import org.springframework.stereotype.Service;
-
+import java.util.List;
 @Service
 public class BookReservationServiceImpl implements BookReservationService{
     private final BookReservationRepository bookReservationRepository;
@@ -21,6 +21,11 @@ public class BookReservationServiceImpl implements BookReservationService{
         reservation.setNumberOfCopies(numberOfCopies);
 
         return bookReservationRepository.save(reservation);
+    }
+    @Override
+    public List<BookReservation> getReservationsForBook(String bookTitle)
+    {
+        return bookReservationRepository.findAllByBookTitle(bookTitle);
     }
 
 }

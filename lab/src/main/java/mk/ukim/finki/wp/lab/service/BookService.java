@@ -5,5 +5,6 @@ import mk.ukim.finki.wp.lab.model.Book;
 
 public interface BookService{
     List<Book> listAll();
-    List<Book> searchBooks(String text, Double rating);
-}
+    Book saveBook(String title, String genre, Double averageRating, Long authorId);
+    Book editBook(Long bookId, String title, String genre, Double averageRating, Long authorId);
+    void deleteBook(Long bookId);}
