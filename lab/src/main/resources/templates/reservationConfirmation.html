@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="mk">
+<html xmlns:th="http://www.thymeleaf.org" lang="mk">
 <head>
     <meta charset="UTF-8">
     <title>Book Reservation - Confirmation</title>
@@ -51,23 +51,23 @@
         </tr>
         <tr>
             <td><b>Reader Name</b></td>
-            <td>${readerName}</td>
+            <td th:text="${readerName}">Reader Name</td>
         </tr>
         <tr>
             <td><b>Client IP Address</b></td>
-            <td>${clientIp}</td>
+            <td th:text="${clientIp}">Client IP</td>
         </tr>
         <tr>
             <td><b>Reservation for Book</b></td>
-            <td>${bookTitle}</td>
+            <td th:text="${bookTitle}">Book Title</td>
         </tr>
         <tr>
             <td><b>Number of copies</b></td>
-            <td>${numCopies}</td>
+            <td th:text="${numCopies}">Number of copies</td>
         </tr>
     </table>
 
-    <a href="/">← Back to book list</a>
+    <a href="/" style="margin-top:20px;">← Back to book list</a>
 </section>
 </body>
 </html>

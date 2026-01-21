@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" lang="mk">
 <head>
     <meta charset="utf-8">
     <title>Book Reservations</title>
@@ -28,7 +28,7 @@
     </style>
 </head>
 <body>
-<h1>Reservations for book: ${bookTitle}</h1>
+<h1 th:text="'Reservations for book: ' + ${bookTitle}">Reservations</h1>
 
 <table>
     <tr>
@@ -37,12 +37,12 @@
         <th>Number of Copies</th>
     </tr>
     <tr th:each="r : ${reservations}">
-        <td th:text="${r.readerName}"></td>
-        <td th:text="${r.readerAddress}"></td>
-        <td th:text="${r.numberOfCopies}"></td>
+        <td th:text="${r.readerName}">Reader Name</td>
+        <td th:text="${r.readerAddress}">Reader Address</td>
+        <td th:text="${r.numberOfCopies}">Number of Copies</td>
     </tr>
 </table>
 
-<a href="/">← Back to books</a>
+<a href="/" style="display:block; margin-top:20px;">← Back to books</a>
 </body>
 </html>

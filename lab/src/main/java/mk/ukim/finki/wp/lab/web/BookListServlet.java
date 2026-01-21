@@ -1,4 +1,5 @@
-package mk.ukim.finki.wp.lab.web;
+/*package mk.ukim.finki.wp.lab.web;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -29,3 +30,4 @@ public class BookListServlet extends HttpServlet {
         context.setVariable("books", books);
         springTemplateEngine.process("listBooks.html", context, response.getWriter());
     } }
+     */

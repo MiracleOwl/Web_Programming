@@ -36,7 +36,12 @@
 
         <div th:each="book : ${books}" class="book-option">
             <input type="radio" name="bookTitle" th:value="${book.title}" required>
-            <span th:text="'Title: ' + ${book.title} + ', Genre: ' + ${book.genre} + ', Rating: ' + ${book.averageRating} + ', Author: ' + ${book.author.name} + ' ' + ${book.author.surname}"></span>
+            <span th:text="'Title: ' + ${book.title}
+                + ', Genre: ' + ${book.genre}
+                + ', Rating: ' + ${book.averageRating}
+                + ', Author: '
+                + (${book.author != null ? book.author.name + ' ' + book.author.surname : 'No author'})">
+            </span>
 
             <a th:href="@{'/books/edit/' + ${book.id}}">Edit</a> |
             <a th:href="@{'/books/delete/' + ${book.id}}">Delete</a>

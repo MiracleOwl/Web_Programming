@@ -12,6 +12,7 @@ public class Book {
     private String genre;
     private double averageRating;
     private Author author;
+    private int likes;
 
     public Book(String title, String genre, double averageRating) {
         this.title = title;
@@ -19,4 +20,8 @@ public class Book {
         this.averageRating = averageRating;
     }
     public Book() {}
+
+    public void like() {
+        this.likes++;
+    }
 }

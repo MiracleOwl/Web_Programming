@@ -1,3 +1,4 @@
+/*
 package mk.ukim.finki.wp.lab.web;
 
 import jakarta.servlet.ServletException;
@@ -36,3 +37,4 @@ public class BookReservationServlet extends HttpServlet {
         request.getRequestDispatcher("/reservationConfirmation.html").forward(request, response);
     }
 }
+*/
